@@ -1,16 +1,18 @@
 # Design Document: gradient-descent-optimizer
 
 ## Overview
-Implémentation d'un optimiseur de gradient descent en Julia
+# gradient-descent-optimizer
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/username/gradient-descent-optimizer/ac
 
 ## Architecture
-Le projet est structuré de manière modulaire pour faciliter la maintenance.
+The project follows a modular architecture for maintainability and extensibility.
 
-## Choix techniques
-- Langage: julia
-- Approche: Implementation directe avec focus sur la performance
+## Technical Choices
+- Language: julia
+- Approach: Direct implementation with focus on correctness and performance
 
-## Améliorations futures
-- Optimisation des performances
-- Ajout de tests supplémentaires
-- Documentation enrichie
+## Future Improvements
+- Performance optimization
+- Additional test coverage
+- Enhanced documentation

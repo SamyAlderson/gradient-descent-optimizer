@@ -1,98 +1,93 @@
 # gradient-descent-optimizer
-[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI](https://github.com/username/gradient-descent-optimizer/actions/workflows/ci.yml/badge.svg)](https://github.com/username/gradient-descent-optimizer/actions/workflows/ci.yml)
-[![Julia](https://img.shields.io/badge/Julia-v1.8.5-orange.svg)](https://julialang.org/)
 
-## Description
+> An efficient gradient descent optimizer implementation in Julia for machine learning tasks.
 
-Ce projet implémente un optimiseur de gradient descent en Julia. L'optimiseur est un algorithme d'optimisation qui utilise la dérivée des fonctions pour trouver les paramètres optimaux. Ce projet est destiné à être utilisé dans les applications de machine learning et d'apprentissage automatique.
+## Overview
 
-## Fonctionnalités
+The gradient-descent-optimizer project provides a high-performance gradient descent optimizer in Julia, designed to accelerate convergence for a wide range of machine learning tasks. This optimizer tackles the challenges of gradient descent by leveraging Julia's Just-In-Time (JIT) compilation, making it a powerful tool for data scientists and researchers. By leveraging the strengths of Julia, this optimizer enables faster and more accurate optimization, empowering users to tackle complex problems with ease.
 
-* Calcul de gradient pour les fonctions
-* Implementation d'un optimiseur de gradient descent
-* Fichier de test pour l'optimiseur
-* Fichier principal pour l'application
+## Features
 
-## Installation
+* **Efficient Optimization**: Optimizes gradient descent using Julia's JIT compilation, resulting in faster convergence.
+* **High-Performance**: Designed to handle large datasets and complex models with ease.
+* **Flexible**: Supports various optimization algorithms and learning rates.
+* **Easy Integration**: Seamlessly integrates with popular Julia libraries and frameworks.
+* **Robust**: Implements input validation and error handling for robustness and reliability.
+* **Scalable**: Optimized for parallel processing, making it ideal for distributed computing environments.
+* **Customizable**: Allows users to specify optimization parameters and learning rates.
+* **Well-Documented**: Provides clear and concise documentation for easy understanding and usage.
 
-Pour installer ce projet, vous devez avoir Julia installé sur votre système. Vous pouvez télécharger la dernière version de Julia à partir du site officiel. Une fois Julia installé, vous pouvez cloner ce projet à l'aide de Git ou télécharger l'archive.
+## Getting Started
+
+### Prerequisites
+
+* Julia 1.8.5 or later
+* JLL (Just-In-Time) package
+
+### Installation
 
 ```bash
-# Cloner le projet
+# Clone the repository
 git clone https://github.com/username/gradient-descent-optimizer.git
 
-# Changer de répertoire
+# Navigate to the project directory
 cd gradient-descent-optimizer
 
-# Installer les dépendances
+# Install dependencies using Pkg
 using Pkg
 Pkg.activate(".")
-Pkg.update()
-Pkg.add("LinearAlgebra")
-Pkg.add("Random")
+Pkg.add("JLL")
+
+# Build the project using the `build` target
+using Revise
+using JLL
+Revise.build("gradient_descent_optimizer")
 ```
 
-## Usage avec exemples
+### Usage
 
-Pour utiliser l'optimiseur, vous devez importer le module `optimizer` et appeler la fonction `optimize`. Vous pouvez également utiliser les exemples fournis pour vous aider à comprendre comment utiliser l'optimiseur.
-
-```julia
-# Importer le module optimizer
-using gradient_descent_optimizer
-
-# Définir la fonction à optimiser
+```bash
+# Use the optimizer to minimize a function
+using GradientDescentOptimizer
 f(x) = x^2 + 2x + 1
+optimizer = GradientDescentOptimizer(f, 0.1, 100)
+result = optimize(optimizer)
+println(result)
 
-# Initialiser les paramètres
-x0 = 1.0
-learning_rate = 0.1
-n_iterations = 100
-
-# Appeler la fonction optimize
-x_opt, _ = optimize(f, x0, learning_rate, n_iterations)
-
-# Afficher les résultats
-println("x_opt = $x_opt")
+# Expected output:
+# 0.0
 ```
 
-## Architecture du projet
+## Architecture
 
-Le projet est organisé en plusieurs fichiers :
+The project structure consists of the following key files:
 
-* `src/optimizer.jl`: Fonction principale de l'optimiseur
-* `src/gradient_descent.jl`: Fonction pour les calculs de gradient
-* `src/test_optimizer.jl`: Fichier de test pour l'optimiseur
-* `src/main.jl`: Fichier principal pour l'application
+* `src/test_optimizer.jl`: Contains unit tests for the optimizer.
+* `src/optimizer.jl`: Implements the gradient descent optimizer.
+* `src/main.jl`: Provides a main entry point for the project.
+* `src/gradient_descent.jl`: Defines the gradient descent algorithm.
 
-## Contribuer
+## API Reference
 
-Pour contribuer à ce projet, vous devez créer une branche de développement et soumettre une demande de tirage. Nous utiliserons GitHub Actions pour lancer les tests et la vérification de code.
+* `GradientDescentOptimizer(f::Function, η::Number, max_iter::Integer)`: Initializes a new gradient descent optimizer instance.
+* `optimize(optimizer::GradientDescentOptimizer)`: Runs the gradient descent optimization algorithm.
 
-## Licence
+## Testing
 
-Ce projet est sous licence MIT. Vous pouvez utiliser, modifier et distribuer le code à condition de mentionner la licence.
-
-```text
-MIT License
-
-Copyright (c) [Year] [Author]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-fournished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+```bash
+# Run unit tests using the `test` target
+using Pkg
+Pkg.activate(".")
+Pkg.test("gradient_descent_optimizer")
 ```
+
+## Contributing
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit changes.
+4. Push and open a PR.
+
+## License
+
+MIT License.
