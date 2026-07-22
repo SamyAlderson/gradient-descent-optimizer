@@ -1,93 +1,62 @@
-# gradient-descent-optimizer
+# Gradient Descent Optimizer
+## Simple gradient descent implementation for optimization
 
-> An efficient gradient descent optimizer implementation in Julia for machine learning tasks.
+This is a basic Julia implementation of the gradient descent optimizer. It's a straightforward way to minimize a cost function, and I used it to test some math library functionality. This optimizer is not particularly efficient or robust, but it works for small problems.
 
-## Overview
+### Install
 
-The gradient-descent-optimizer project provides a high-performance gradient descent optimizer in Julia, designed to accelerate convergence for a wide range of machine learning tasks. This optimizer tackles the challenges of gradient descent by leveraging Julia's Just-In-Time (JIT) compilation, making it a powerful tool for data scientists and researchers. By leveraging the strengths of Julia, this optimizer enables faster and more accurate optimization, empowering users to tackle complex problems with ease.
-
-## Features
-
-* **Efficient Optimization**: Optimizes gradient descent using Julia's JIT compilation, resulting in faster convergence.
-* **High-Performance**: Designed to handle large datasets and complex models with ease.
-* **Flexible**: Supports various optimization algorithms and learning rates.
-* **Easy Integration**: Seamlessly integrates with popular Julia libraries and frameworks.
-* **Robust**: Implements input validation and error handling for robustness and reliability.
-* **Scalable**: Optimized for parallel processing, making it ideal for distributed computing environments.
-* **Customizable**: Allows users to specify optimization parameters and learning rates.
-* **Well-Documented**: Provides clear and concise documentation for easy understanding and usage.
-
-## Getting Started
-
-### Prerequisites
-
-* Julia 1.8.5 or later
-* JLL (Just-In-Time) package
-
-### Installation
-
+You can install this package using Julia's package manager:
 ```bash
-# Clone the repository
-git clone https://github.com/username/gradient-descent-optimizer.git
-
-# Navigate to the project directory
-cd gradient-descent-optimizer
-
-# Install dependencies using Pkg
-using Pkg
-Pkg.activate(".")
-Pkg.add("JLL")
-
-# Build the project using the `build` target
-using Revise
-using JLL
-Revise.build("gradient_descent_optimizer")
+julia> using Pkg
+julia> Pkg.add("https://github.com/SamyAlderson/gradient-descent-optimizer.git")
 ```
 
 ### Usage
 
-```bash
-# Use the optimizer to minimize a function
+To use the optimizer, create a new Julia script and add the following:
+```julia
 using GradientDescentOptimizer
-f(x) = x^2 + 2x + 1
-optimizer = GradientDescentOptimizer(f, 0.1, 100)
+
+# Define a cost function and its gradient
+cost(x) = x^2
+grad_cost(x) = 2x
+
+# Initialize the optimizer
+optimizer = GradientDescentOptimizer(cost, grad_cost, 0.1, 100)
+
+# Run the optimizer
 result = optimize(optimizer)
+
+# Print the result
 println(result)
-
-# Expected output:
-# 0.0
 ```
 
-## Architecture
+### Build from Source
 
-The project structure consists of the following key files:
-
-* `src/test_optimizer.jl`: Contains unit tests for the optimizer.
-* `src/optimizer.jl`: Implements the gradient descent optimizer.
-* `src/main.jl`: Provides a main entry point for the project.
-* `src/gradient_descent.jl`: Defines the gradient descent algorithm.
-
-## API Reference
-
-* `GradientDescentOptimizer(f::Function, η::Number, max_iter::Integer)`: Initializes a new gradient descent optimizer instance.
-* `optimize(optimizer::GradientDescentOptimizer)`: Runs the gradient descent optimization algorithm.
-
-## Testing
-
+This package uses the standard `Pkg.build` command to build:
 ```bash
-# Run unit tests using the `test` target
-using Pkg
-Pkg.activate(".")
-Pkg.test("gradient_descent_optimizer")
+julia> Pkg.build("gradient-descent-optimizer")
 ```
 
-## Contributing
+### Run Tests
 
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit changes.
-4. Push and open a PR.
+This package includes a test suite. You can run the tests using the following command:
+```bash
+julia> using Test
+julia> Test.run("GradientDescentOptimizer")
+```
 
-## License
+### Project Structure
 
-MIT License.
+* `src/GradientDescentOptimizer.jl`: The main implementation file.
+* `src/test_gradient_descent_optimizer.jl`: The test suite.
+* `src/test_gradient_descent_optimizer_utils.jl`: Helper functions for testing.
+* `README.md`: This file.
+
+### License
+
+Copyright (c) 2026 SamyAlderson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
